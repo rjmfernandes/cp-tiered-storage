@@ -5,24 +5,25 @@
 ## Resources
 * [Tiered Storage](https://docs.confluent.io/platform/current/kafka/tiered-storage.html#aws)
 
-## S3
-Create a S3 bucket and store/create corresponding permission keys.
+## Blob Storage
+1. Create a Storage account and get the connection string (under Access Keys).
+2. Under Containers, we create a `tieredstorage` container.
+
 
 ## Brokers
 
-We mount a credentials file containing `accessKey` and `secretKey` into the container and
+We mount a credentials file containing the `connectionString` into the container and
 we add to the broker configuration:
 
 ```yaml
 KAFKA_CONFLUENT_TIER_FEATURE: "true"
 KAFKA_CONFLUENT_TIER_METADATA_REPLICATION_FACTOR: 1
 KAFKA_CONFLUENT_TIER_TOPIC_DELETE_CHECK_INTERVAL: 60000
-## AWS S3
-KAFKA_CONFLUENT_TIER_BACKEND: S3
-KAFKA_CONFLUENT_TIER_S3_BUCKET: "pneff-tiered-storage-demo"
-KAFKA_CONFLUENT_TIER_S3_REGION: "eu-central-1"
-KAFKA_CONFLUENT_TIER_S3_PREFIX: "ts-demo"
-KAFKA_CONFLUENT_TIER_S3_CRED_FILE_PATH: /home/appuser/credentials.txt
+## Azure Blob Storage
+KAFKA_CONFLUENT_TIER_BACKEND: AzureBlockBlob
+KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CONTAINER: "tieredstorage"
+KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_PREFIX: "ts-demo"
+KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CRED_FILE_PATH: /home/appuser/credentials.txt
 ```
 
 
@@ -50,7 +51,7 @@ kafka-producer-perf-test \
 ## Verify Tiered Storage
 
 ![](./images/ts-c3.png)
-![](./images/ts-s3.png)
+![](./images/ts-blob.png)
 
 ## Consume
 ```shell
