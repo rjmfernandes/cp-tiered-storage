@@ -70,4 +70,4 @@ kafka-topics \
   --topic test-topic \  
 ```
 
-The files in the S3 bucket are deleted after some period (`confluent.tier.topic.delete.check.interval.ms` = 1 min) too.
+The files in the Blob storage are deleted after some period (`confluent.tier.topic.delete.check.interval.ms` = 1 min) too.
