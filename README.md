@@ -61,10 +61,7 @@ kafka-producer-perf-test \
    --num-records 3600000
 ```
 
-## Verify Tiered Storage
-
-![](./images/ts-c3.png)
-![](./images/ts-blob.png)
+You can check now your tiered storage in Azure and confirm it's working.
 
 ## Consume
 ```shell
