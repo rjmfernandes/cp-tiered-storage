@@ -13,7 +13,7 @@
 ## Brokers
 
 We mount a credentials file containing the `connectionString` into the container and
-we add to the broker configuration: its path:
+we add to the broker configuration its path:
 
 ```yaml
 KAFKA_CONFLUENT_TIER_FEATURE: "true"
