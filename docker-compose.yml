@@ -10,7 +10,7 @@ services:
       - "9092:9092"
       - "9101:9101"
     volumes:
-      - ./azure-creds.txt:/home/appuser/credentials.txt
+      - ./creds.json:/home/appuser/creds.json
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT'
@@ -39,9 +39,9 @@ services:
       KAFKA_CONFLUENT_TIER_TOPIC_DELETE_CHECK_INTERVAL: 60000
       ## Azure Blob Storage
       KAFKA_CONFLUENT_TIER_BACKEND: AzureBlockBlob
-      KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CONTAINER: "tieredstorage"
+      KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CONTAINER: "tiereddemo"
       KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_PREFIX: "ts-demo"
-      KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CRED_FILE_PATH: /home/appuser/credentials.txt
+      KAFKA_CONFLUENT_TIER_AZURE_BLOCK_BLOB_CRED_FILE_PATH: /home/appuser/creds.json
 
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.6.0
